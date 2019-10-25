@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="ur10_ip" default="192.168.80.80"/>
+  <arg name="gripper_ip" default="192.168.80.90"/>
+  <arg name="gripper_prefix" default="l_"/>
+
+  <arg name="ur10_ns" default="/ur10" />
+
+  <!-- startup UR10 robot -->
+  <include file="$(find challenge_arena)/launch/ur10_bringup.launch">
+    <arg name="ur10_ns" value="$(arg ur10_ns)" />
+    <arg name="robot_ip" value="$(arg ur10_ip)" />
+  </include>
+
+  <!-- startup Robotiq 3 finger gripper -->
+  <include file="$(find challenge_arena)/launch/gripper_real.launch">
+    <arg name="ur10_ns" value="$(arg ur10_ns)" />
+    <arg name="gripper_ip" value="$(arg gripper_ip)" />
+    <arg name="prefix" default="$(arg gripper_prefix)"/>
+  </include>
+
+</launch>

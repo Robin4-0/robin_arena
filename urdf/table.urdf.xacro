@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar_table">
+  <xacro:macro name="table" params="">
+    <static>true</static>
+    <link name="table_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="100"/>
+        <inertia ixx="10" ixy="0" ixz="0" iyy="10" iyz="0" izz="10" />
+      </inertial>
+      <visual>
+        <geometry>
+          <box size="1.0 0.785 0.27"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="1.0 0.785 0.27"/>
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+</robot>

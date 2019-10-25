@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="ur5_ns" default="/ur5" />
+
+  <group ns="$(arg ur5_ns)">
+    <include file="$(find ar_arena)/launch/ur5.launch">
+      <arg name="ur5_ns" value="/$(arg ur5_ns)" />
+    </include>
+
+    <!-- push robot_description to factory and spawn robot in gazebo -->
+    <node name="spawn_ur5_model"
+          pkg="gazebo_ros"
+          type="spawn_model"
+          args="-urdf -param robot_description -model ar_ur5"
+          respawn="false"
+          output="screen" />
+
+      <include file="$(find ar_arena)/launch/controller_utils.launch" />
+
+      <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur5.yaml" command="load"/>
+      <node name="arm_controller_spawner"
+      pkg="controller_manager"
+      type="controller_manager"
+      args="spawn arm_controller"
+      respawn="false"
+      output="screen"/>
+
+      <node name="relay_depth_camera_info" pkg="topic_tools" type="relay" output="screen" args="/camera/rgb_lowres/camera_info /camera/depth_lowres/camera_info" />
+      <node name="relay_depth_ir_camera_info" pkg="topic_tools" type="relay" output="screen" args="/camera/ir/camera_info /camera/depth/camera_info" />
+    </group>
+  </launch>

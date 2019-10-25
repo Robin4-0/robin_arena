@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       name="ur5_with_gripper" >
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+  <!-- ur10 -->
+  <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
+  <!-- adaptor -->
+  <xacro:include filename="$(find ar_arena)/urdf/adaptor.urdf.xacro" />
+  <!-- gripper -->
+  <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq_hand_macro.urdf.xacro" />
+
+  <!-- macro definition for ur5 robot with gripper -->
+  <xacro:macro name="ur5_with_gripper" params="prefix parent joint_limited *origin">
+    <joint name="${prefix}base_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${prefix}base_link"/>
+      <xacro:insert_block name="origin" />
+    </joint>
+    <!-- ur10 -->
+    <xacro:ur5_robot prefix="${prefix}" joint_limited="${joint_limited}" />
+    <!-- adaptor -->
+    <xacro:adaptor prefix="${prefix}" parent="${prefix}ee_link">
+      <origin xyz="-0.005 0 0" rpy="0 ${pi/2} 0"/>
+    </xacro:adaptor>
+    <!-- gripper -->
+    <xacro:robotiq_hand prefix="l_" parent="${prefix}support_link" reflect="-1" >
+      <origin xyz="0 0 0.07" rpy="${pi/2} 0  ${pi/2}" />
+    </xacro:robotiq_hand>
+    <!--
+    plugin exposes the next parameters via SDF tags:
+    ///   * <side> Determines if we are controlling the left or right hand. This is
+    ///            a required parameter and the allowed values are 'left' or 'right'
+    ///   * <kp_position> P gain for the PID that controls the position
+    ///                   of the joints. This parameter is optional.
+    ///   * <ki_position> I gain for the PID that controls the position
+    ///                   of the joints. This parameter is optional.
+    ///   * <kd_position> D gain for the PID that controls the position
+    ///                   of the joints. This parameter is optional.
+    ///   * <position_effort_min> Minimum output of the PID that controls the
+    ///                           position of the joints. This parameter is optional
+    ///   * <position_effort_max> Maximum output of the PID that controls the
+    ///                           position of the joints. This parameter is optional
+    ///   * <topic_command> ROS topic name used to send new commands to the hand.
+    ///                     This parameter is optional.
+    ///   * <topic_state> ROS topic name used to receive state from the hand.
+    ///                   This parameter is optional.
+  -->
+  <gazebo>
+    <plugin name="gazebo_robotiq" filename="libRobotiqHandPlugin.so">
+      <side>left</side>
+      <kp_position>5.0</kp_position>
+      <kd_position>0.5</kd_position>
+      <namespace>robotiq_hands/</namespace>
+    </plugin>
+  </gazebo>
+
+</xacro:macro>
+
+
+</robot>

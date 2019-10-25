@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+  xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+  xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+  xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+  name="ar_tool" >
+
+  <xacro:macro name="adaptor" params="parent prefix *origin">
+
+    <!-- mount the tool to the robot -->
+    <joint name="${prefix}support_joint" type="fixed" >
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}" />
+      <child link="${prefix}support_link" />
+    </joint>
+
+    <link name="${prefix}support_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://ar_arena/meshes/support.dae"/>
+        </geometry>
+        <material name="greyish">
+          <color rgba="0.8 0.8 0.8 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://ar_arena/meshes/support.dae"/>
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+</robot>

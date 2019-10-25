@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+  xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+  xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+  xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+  name="ar_ur5" >
+
+
+  <xacro:include filename="$(find ar_arena)/urdf/wall.urdf.xacro" />
+  <xacro:include filename="$(find ar_arena)/urdf/table.urdf.xacro" />
+  <xacro:include filename="$(find ar_arena)/urdf/ur_stand.urdf.xacro" />
+  <xacro:include filename="$(find ar_arena)/urdf/ur5_with_gripper.urdf.xacro" />
+  <xacro:include filename="$(find ar_arena)/urdf/kinect.urdf.xacro" />
+
+  <!-- setup empty world -->
+  <link name="world"/>
+
+  <!-- wall -->
+  <xacro:wall/>
+  <joint name="wall_in_world" type="fixed">
+    <parent link="world" />
+    <child link = "wall_link" />
+    <origin xyz="0.0 -1.035 1.5" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <!-- table -->
+  <xacro:table/>
+  <joint name="table_in_world" type="fixed">
+    <parent link="world" />
+    <child link = "table_link" />
+    <origin xyz="0.0 -0.5925 0.735" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <!-- ur_stand -->
+  <xacro:ur_stand/>
+  <joint name="ur_stand_in_world" type="fixed">
+    <parent link="world" />
+    <child link = "ur_stand_link" />
+    <origin xyz="0.0 0.0 0.435" rpy="0.0 0.0 0.0" />
+  </joint>
+
+
+  <!-- table - robot - adaptor - magnet -->
+  <xacro:ur5_with_gripper prefix="" parent="ur_stand_link" joint_limited="true">
+    <origin xyz="0 0 0.435" rpy="0 0 0"/>
+  </xacro:ur5_with_gripper>
+
+<!-- attach the kinect support to the table-->
+<joint name="kinect_joint" type="fixed">
+  <parent link="world" />
+  <child link = "kinect_support" />
+  <origin xyz="-0.2 -0.765 2.85" rpy="0 1.2 1.57" />
+</joint>
+
+<!-- kinect support-->
+<link name="kinect_support" />
+
+
+
+  <!-- add the kinect-->
+  <xacro:sensor_kinect parent="kinect_support"/>
+
+</robot>
