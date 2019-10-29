@@ -1,0 +1,19 @@
+standalone_tags:
+  [
+          {id: 0, size: 0.052, frame_id: cube1_frame},
+          {id: 1, size: 0.052, frame_id: cube2_frame},
+          {id: 2, size: 0.052, frame_id: cube3_frame},
+          {id: 3, size: 0.052, frame_id: cube4_frame},
+          {id: 4, size: 0.052, frame_id: cyl1_frame},
+          {id: 5, size: 0.052, frame_id: cyl2_frame},
+          {id: 6, size: 0.052, frame_id: triangle1_frame},
+          {id: 7, size: 0.052, frame_id: triangle2_frame},
+          {id: 8, size: 0.052, frame_id: triangle3_frame},
+          {id: 9, size: 0.052, frame_id: blue_cube_1},
+          {id: 10, size: 0.052, frame_id: blue_cube_2},
+          {id: 11, size: 0.052, frame_id: blue_cube_3},
+          {id: 12, size: 0.052, frame_id: blue_cube_4},
+          {id: 13, size: 0.052, frame_id: red_triangle_1},
+          {id: 14, size: 0.052, frame_id: red_triangle_2},
+          {id: 15, size: 0.052, frame_id: red_triangle_3}]
+  ]

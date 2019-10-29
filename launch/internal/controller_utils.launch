@@ -10,7 +10,7 @@
   <!-- Gripper state publisher -->
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="gripper_state_publisher">
     <param name="publish_frequency" type="double" value="50.0" />
-    <remap to="/robotiq_hands/l_hand/joint_states" from="joint_states" />
+    <remap to="/robotiq_hands/left_hand/joint_states" from="joint_states" />
   </node>
 
   <!-- Fake Calibration -->

@@ -6,11 +6,11 @@
   name="ar_ur5" >
 
 
-  <xacro:include filename="$(find ar_arena)/urdf/wall.urdf.xacro" />
-  <xacro:include filename="$(find ar_arena)/urdf/table.urdf.xacro" />
-  <xacro:include filename="$(find ar_arena)/urdf/ur_stand.urdf.xacro" />
-  <xacro:include filename="$(find ar_arena)/urdf/ur5_with_gripper.urdf.xacro" />
-  <xacro:include filename="$(find ar_arena)/urdf/kinect.urdf.xacro" />
+  <xacro:include filename="$(find ar_arena)/urdf/assets/wall.urdf.xacro" />
+  <xacro:include filename="$(find ar_arena)/urdf/assets/table.urdf.xacro" />
+  <xacro:include filename="$(find ar_arena)/urdf/assets/ur_stand.urdf.xacro" />
+  <xacro:include filename="$(find ar_arena)/urdf/assets/kinect.urdf.xacro" />
+  <xacro:include filename="$(find ar_arena)/urdf/assemblies/ur5_with_gripper.urdf.xacro" />
 
   <!-- setup empty world -->
   <link name="world"/>
@@ -41,23 +41,22 @@
 
 
   <!-- table - robot - adaptor - magnet -->
-  <xacro:ur5_with_gripper prefix="" parent="ur_stand_link" joint_limited="true">
+  <xacro:ur5_with_gripper prefix=""
+                          parent="ur_stand_link"
+                          joint_limited="$(arg joint_limited)">
     <origin xyz="0 0 0.435" rpy="0 0 0"/>
   </xacro:ur5_with_gripper>
 
-<!-- attach the kinect support to the table-->
-<joint name="kinect_joint" type="fixed">
-  <parent link="world" />
-  <child link = "kinect_support" />
-  <origin xyz="-0.2 -0.765 2.85" rpy="0 1.2 1.57" />
-</joint>
+  <!-- attach the kinect support to the table-->
+  <joint name="kinect_joint" type="fixed">
+    <parent link="world" />
+    <child link = "kinect_support" />
+    <origin xyz="-0.2 -0.765 2.85" rpy="0 1.2 1.57" />
+  </joint>
 
-<!-- kinect support-->
-<link name="kinect_support" />
-
-
+  <!-- kinect support-->
+  <link name="kinect_support" />
 
   <!-- add the kinect-->
   <xacro:sensor_kinect parent="kinect_support"/>
-
 </robot>

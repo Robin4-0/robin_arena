@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-  <arg name="ur5_ns" default="/ur5" />
-  <group ns="$(arg ur5_ns)">
-    <param name="robot_description" command="$(find xacro)/xacro '$(find ar_arena)/urdf/ur5_limited.urdf.xacro'" />
-  </group>
-</launch>

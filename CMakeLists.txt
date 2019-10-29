@@ -12,6 +12,8 @@ find_package(catkin REQUIRED
                     roscpp
                     rospy
                     nav_msgs
+                    robotiq_3f_gripper_articulated_msgs
+                    robotiq_3f_gripper_control
                     gazebo_ros)
 
 ## System dependencies are found with CMake's conventions

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="ur5_ns"      default="/ur5"  />
+  <arg name="ur5_limited" default="true"  />
+
+  <group ns="$(arg ur5_ns)">
+    <param name="robot_description"
+           command="$(find xacro)/xacro '$(find ar_arena)/urdf/manipulator_arena_setup.urdf.xacro' joint_limited:=$(arg ur5_limited)" />
+  </group>
+</launch>

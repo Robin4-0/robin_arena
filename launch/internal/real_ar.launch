@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="manipulator_ns"      default="/ur5"          />
+  <arg name="manipulator_ip"      default="192.168.80.80" />
+  <arg name="manipulator_limited" default="true"          />
+  <arg name="gripper_enable"      default="true"          />
+  <arg name="gripper_ip"          default="192.168.80.90" />
+  <arg name="gripper_prefix"      default="l_"            />
+
+  <!-- Bringup Unipd Autonomous Robotics Arena -->
+  <include file="$(find ar_arena)/launch/internal/ur5_bringup.launch">
+    <arg name="ur5_ns"        value="$(arg manipulator_ns)"       />
+    <arg name="ur5_ip"        value="$(arg manipulator_ip)"       />
+    <arg name="ur5_limited"   value="$(arg manipulator_limited)"  />
+  </include>
+
+  <!-- Bringup Manipulator Gripper -->
+  <include file="$(find ar_arena)/launch/internal/gripper_real.launch" if="$(arg gripper_enable)">
+    <arg name="manipulator_ns"        value="$(arg ur10_ns)"        />
+    <arg name="gripper_ip"            value="$(arg gripper_ip)"     />
+    <arg name="gripper_prefix"        value="$(arg gripper_prefix)" />
+  </include>
+</launch>

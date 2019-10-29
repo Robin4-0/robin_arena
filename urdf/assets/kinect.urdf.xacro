@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root name="sensor_kinect" xmlns:xacro="http://ros.org/wiki/xacro">
-	<xacro:include filename="$(find ar_arena)/urdf/kinect2.gazebo.xacro" />
+	<xacro:include filename="$(find ar_arena)/urdf/assets/kinect2.gazebo.xacro" />
 	<xacro:include filename="$(find common_sensors)/urdf/sensors/kinect_properties.urdf.xacro"/>
 
    	<!-- camera_name has to be unique! -->
