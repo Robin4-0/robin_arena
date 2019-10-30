@@ -1,14 +1,15 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="paused" default="false"                         />
-  <arg name="gui" default="true"                            />
-  <arg name="simulation" default="true"                     />
+  <arg name="paused"              default="false"           />
+  <arg name="gui"                 default="true"            />
+  <arg name="simulation"          default="true"            />
   <arg name="manipulator_ns"      default="/ur5"            />
-  <arg name="manipulator_ip"      default="192.168.202.XX"  />
+  <arg name="manipulator_ip"      default="192.168.202.138" />
   <arg name="manipulator_limited" default="true"            />
   <arg name="gripper_enable"      default="true"            />
   <arg name="gripper_ip"          default="192.168.XX.XX"   />
   <arg name="gripper_prefix"      default="l_"              />
+  <arg name="moveit_package_name" default="ar_moveit_config"/>
 
   <include if="$(arg simulation)" file="$(find ar_arena)/launch/internal/simulated_ar.launch">
     <arg name="paused"              value="$(arg paused)"              />
@@ -25,5 +26,12 @@
     <arg name="gripper_enable"      value="$(arg gripper_enable)"      />
     <arg name="gripper_prefix"      value="$(arg gripper_prefix)"      />
     <arg name="gripper_ip"          value="$(arg gripper_ip)"          />
+  </include>
+
+  <!-- Startup UR5 moveit controllers-->
+  <include file="$(find ar_arena)/launch/internal/ur5_moveit_planning_execution.launch">
+    <arg name="ur5_ns"                value="$(arg manipulator_ns)"       />
+    <arg name="moveit_package_name"   value="$(arg moveit_package_name)"  />
+    <arg name="sim"                   value="$(arg simulation)" />
   </include>
 </launch>

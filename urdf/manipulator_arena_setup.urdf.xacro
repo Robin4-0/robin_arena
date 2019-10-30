@@ -9,8 +9,10 @@
   <xacro:include filename="$(find ar_arena)/urdf/assets/wall.urdf.xacro" />
   <xacro:include filename="$(find ar_arena)/urdf/assets/table.urdf.xacro" />
   <xacro:include filename="$(find ar_arena)/urdf/assets/ur_stand.urdf.xacro" />
-  <xacro:include filename="$(find ar_arena)/urdf/assets/kinect.urdf.xacro" />
+  <!-- <xacro:include filename="$(find ar_arena)/urdf/assets/kinect.urdf.xacro" /> -->
   <xacro:include filename="$(find ar_arena)/urdf/assemblies/ur5_with_gripper.urdf.xacro" />
+
+  <xacro:include filename="$(find common_sensors)/urdf/sensors/kinect2.urdf.xacro" />
 
   <!-- setup empty world -->
   <link name="world"/>
@@ -48,15 +50,19 @@
   </xacro:ur5_with_gripper>
 
   <!-- attach the kinect support to the table-->
-  <joint name="kinect_joint" type="fixed">
-    <parent link="world" />
+  <!-- <joint name="kinect_joint" type="fixed">
+    <parent link="base_link" />
     <child link = "kinect_support" />
-    <origin xyz="-0.2 -0.765 2.85" rpy="0 1.2 1.57" />
-  </joint>
+    <origin xyz="-0.04702154884695053 -0.6984394646715101 1.9614343867523603" rpy="-2.8643 0.0379642 0.0164376" />
+  </joint> -->
 
   <!-- kinect support-->
-  <link name="kinect_support" />
-
+  <!-- <link name="kinect_support" /> -->
   <!-- add the kinect-->
-  <xacro:sensor_kinect parent="kinect_support"/>
+  <xacro:kinect2 name="camera" parent="base_link">
+    <!-- <origin xyz="-0.04702154884695053 -0.6984394646715101 1.9614343867523603" rpy="-1.296 1.679642 0.0164376" /> -->
+    <origin xyz="-0.04702154884695053 -0.7984394646715101 1.9614343867523603" rpy="-1.296 1.579642 0.234376" />
+  </xacro:kinect2>
+
+  <!-- <xacro:sensor_kinect parent="kinect_support"/> -->
 </robot>

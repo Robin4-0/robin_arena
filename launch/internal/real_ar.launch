@@ -6,6 +6,8 @@
   <arg name="gripper_enable"      default="true"          />
   <arg name="gripper_ip"          default="192.168.80.90" />
   <arg name="gripper_prefix"      default="l_"            />
+  <arg name="namespace_prefix"    default=""              />
+  <arg name="camera_base_name"    default="camera"        />
 
   <!-- Bringup Unipd Autonomous Robotics Arena -->
   <include file="$(find ar_arena)/launch/internal/ur5_bringup.launch">
@@ -16,8 +18,26 @@
 
   <!-- Bringup Manipulator Gripper -->
   <include file="$(find ar_arena)/launch/internal/gripper_real.launch" if="$(arg gripper_enable)">
-    <arg name="manipulator_ns"        value="$(arg ur10_ns)"        />
+    <arg name="manipulator_ns"        value="$(arg manipulator_ns)" />
     <arg name="gripper_ip"            value="$(arg gripper_ip)"     />
     <arg name="gripper_prefix"        value="$(arg gripper_prefix)" />
   </include>
+
+  <!-- start Kinect 2 Bridge -->
+  <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch" >
+    <arg name="base_name"   value="$(arg camera_base_name)" />
+    <arg name="publish_tf"  value="true"                    />
+  </include>
+
+<!-- start easy_handeye -->
+<group ns="$(arg manipulator_ns)">
+
+  <include file="$(find easy_handeye)/launch/publish.launch" >
+    <arg name="namespace_prefix"            value="$(arg namespace_prefix)"       />
+    <arg name="eye_on_hand"                 value="false"                         />
+    <arg name="tracking_base_frame"         value="$(arg camera_base_name)_link"  />
+    <arg name="robot_base_frame"            value="base_link"                     />
+  </include>
+</group>
+
 </launch>

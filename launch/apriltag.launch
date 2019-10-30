@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="apriltag_calibration_conf"   default="$(find ar_arena)/cfg/apriltag_calibration.yaml" />
+  <arg name="camera_base_name"            default="camera"                                         />
+
+  <!-- start Apriltags detector -->
+  <include file="$(find ar_arena)/launch/internal/apriltag_ros.launch">
+    <arg name="camera_name"                value="$(arg camera_base_name)"          />
+    <arg name="calibration"                value="true"                             />
+    <arg name="apriltags_calibration_conf" value="$(arg apriltag_calibration_conf)" />
+  </include>
+
+</launch>
