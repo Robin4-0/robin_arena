@@ -1,14 +1,18 @@
 <?xml version="1.0"?>
 <launch>
-
-  <arg name="apriltag_calibration_conf"   default="$(find ar_arena)/cfg/apriltag_calibration.yaml" />
-  <arg name="camera_base_name"            default="camera"                                         />
+  <arg name="camera_base_name"           default="camera"                                         />
+  <arg name="simulation"                 default="false"                                          />
+  <arg name="calibration_routine"        default="false"                                          />
+  <arg name="apriltag_config_yaml"       default="$(find ar_arena)/cfg/apriltags_arena.yaml"      />
+  <arg name="apriltag_config_calib_yaml" default="$(find ar_arena)/cfg/apriltag_calibration.yaml" />
 
   <!-- start Apriltags detector -->
   <include file="$(find ar_arena)/launch/internal/apriltag_ros.launch">
-    <arg name="camera_name"                value="$(arg camera_base_name)"          />
-    <arg name="calibration"                value="true"                             />
-    <arg name="apriltags_calibration_conf" value="$(arg apriltag_calibration_conf)" />
-  </include>
+    <arg name="camera_name"                                            value="$(arg camera_base_name)"           />
+    <arg name="apriltags_cfg_yaml" if="$(arg calibration_routine)"     value="$(arg apriltag_config_calib_yaml)" />
+    <arg name="apriltags_cfg_yaml" unless="$(arg calibration_routine)" value="$(arg apriltag_config_yaml)"       />
+    <arg name="image_topic"        if="$(arg simulation)"              value="/rgb/image_raw"                    />
+    <arg name="image_topic"        unless="$(arg simulation)"          value="/hd/image_color_rect"              />
 
+  </include>
 </launch>

@@ -6,23 +6,18 @@
   <arg name="camera_frame"    default="$(arg camera_name)_rgb_optical_frame"  />
   <arg name="image_topic"     default="/hd/image_color_rect"                  />
 
-  <arg name="calibration"                 default="false"                                 />
-  <arg name="apriltags_runtime_conf"      default="$(find apriltag_ros)/config/tags.yaml" />
-  <arg name="apriltags_calibration_conf"  default="$(find apriltag_ros)/config/tags.yaml" />
+  <arg name="apriltags_cfg_yaml" default="$(find apriltag_ros)/config/tags.yaml" />
 
   <!-- Set parameters -->
   <rosparam command="load" file="$(find apriltag_ros)/config/settings.yaml"
                            ns="$(arg node_namespace)" />
-  <rosparam command="load" if="$(arg calibration)"
-                           file="$(arg apriltags_calibration_conf)"
-                           ns="$(arg node_namespace)" />
-  <rosparam command="load" unless="$(arg calibration)"
-                           file="$(arg apriltags_runtime_conf)"
+  <rosparam command="load" file="$(arg apriltags_cfg_yaml)"
                            ns="$(arg node_namespace)" />
 
   <node pkg="apriltag_ros" type="apriltag_ros_continuous_node"
                            name="$(arg node_namespace)"
                            clear_params="true">
+
     <!-- Remap topics from those used in code to those on the ROS network -->
     <remap from="image_rect"  to="$(arg camera_name)/$(arg image_topic)"  />
     <remap from="camera_info" to="$(arg camera_name)/camera_info"         />
