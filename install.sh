@@ -25,16 +25,6 @@ if [ -d "${ROS_WORKSPACE}" ]; then
     UBUNTU_VERSION=bionic
     ROS_DISTRO=melodic
 
-#     # Challenge bash scripts for connecting to the real robots
-#     echo -n "Do you want to add the challenge bash script? [y/N]: "
-#     read EMARC_SCRIPTS
-#     if  [ ${EMARC_SCRIPTS} == "y" ]; then
-#         echo ""  >> ~/.bashrc
-#         echo "if [ -f ~/.bash_emarc ]; then" >> ~/.bashrc
-#         echo "  source ~/.bash_emarc" >> ~/.bashrc
-#         echo "fi" >> ~/.bashrc
-#     fi
-
     # Updating Ubuntu APT repositories
     echo "Please insert username and password: "
     read -p 'Username: ' uservar
@@ -152,55 +142,25 @@ if [ -d "${ROS_WORKSPACE}" ]; then
     echo -n "Do you want to install the Unipd Autonomous Robotics ROS packages? [y/N]: "
     read enable_autonomous_robotics_pkgs
 
-#     # Challenge Environment and Robots Configuration ROS source packages
-#     if  [ ${CHALLENGE_PKGS} == "y" ]; then
-#         # Request for BitBucket information
-#         echo -n "Enter your BitBucket username and press [ENTER]: "
-#         read BIT_USER
+    # Challenge Environment and Robots Configuration ROS source packages
+    if  [ ${enable_autonomous_robotics_pkgs} == "y" ]; then
+      cd ${internal_src_path}
+      git clone https://github.com/autonomous-robotics-master/ar_arena.git
+      wait
+      git clone https://github.com/autonomous-robotics-master/ar_moveit_config.git
+      wait
+      git clone https://github.com/autonomous-robotics-master/marrtino.git
 
-#         # Set git to use the credential memory cache
-#         git config --global credential.helper cache
-#         # for the selected user
-#         git config --global credential.https://github.com.username ${BIT_USER}
-#         # Set the cache to timeout after 1 hour (setting is in seconds)
-#         git config --global credential.helper 'cache --timeout=3600'
+      cd ${ROS_WORKSPACE}
+      rosdep install -iyr --from-paths src
+    fi
 
-#         # Cloning challenge_arena package...
-#         git clone https://${BIT_USER}@bitbucket.org/iaslab-unipd/challenge_arena.git
-#         wait
-#         sleep 5
-#         # Cloning ur10_platform_challenge_moveit_config package...
-#         git clone https://${BIT_USER}@bitbucket.org/iaslab-unipd/ur10_platform_challenge_moveit_config.git
-#         wait
-#         sleep 5
-# 	# Cloning the challenge arena collision object package...
-#         git clone https://${BIT_USER}@bitbucket.org/iaslab-unipd/arena_collision.git
-#         wait
-#         sleep 5
-#
-#         rosdep install robotiq_modbus_tcp
-
-#         wait
-#         sleep 5
-#         git clone https://github.com/RIVeR-Lab/apriltags_ros.git
-#         wait
-#         sleep 5
-#         git clone https://github.com/pal-robotics/gazebo_ros_link_attacher.git
-#         wait sleep 5
-#         # Cloning marrtino_navigation package...
-#         git clone https://${BIT_USER}@bitbucket.org/koide3/marrtino_navigation.git
-#         wait
-#         sleep 5
-
-#     fi
-
-#     # Compiling
+    # Compiling
     cd ${ROS_WORKSPACE}
     catkin build -DCMAKE_BUILD_TYPE=Release
 
-#     # Environment setup
+    # Environment setup
     source ${ROS_WORKSPACE}/devel/setup.bash
-#     rosrun challenge_arena EMARC_disconnect.sh
 fi
 
 # # Go back to the initial directory
