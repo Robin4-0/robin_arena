@@ -32,6 +32,6 @@
   <include file="$(find ar_arena)/launch/internal/ur5_moveit_planning_execution.launch">
     <arg name="ur5_ns"                value="$(arg manipulator_ns)"       />
     <arg name="moveit_package_name"   value="$(arg moveit_package_name)"  />
-    <arg name="sim"                   value="$(arg simulation)" />
+    <arg name="sim"                   value="$(arg simulation)"           />
   </include>
 </launch>

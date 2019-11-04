@@ -1,44 +1,46 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="paused" default="true"/>
-  <arg name="gui" default="true"/>
-  <arg name="use_sim_time" default="true"/>
+  <arg name="paused"        default="true" />
+  <arg name="gui"           default="true" />
+  <arg name="use_sim_time"  default="true" />
 
   <arg name="manipulator_ns"      default="/ur5" />
   <arg name="manipulator_limited" default="true" />
-  <!-- <arg name="mobile_platform_ns" default="marrtino" />
 
-  <arg name="tf_prefix" default="marrtino" />
-  <arg name="x" default="0.0"/>
-  <arg name="y" default="0.0"/>
-  <arg name="z" default="0.0"/>
-  <arg name="yaw" default="3.14"/> -->
+  <arg name="mobile_platform_ns"        default="marrtino"  />
+  <arg name="mobile_platform_start_x"   default="-1.31"     />
+  <arg name="mobile_platform_start_y"   default="0.0"       />
+  <arg name="mobile_platform_start_z"   default="0.0"       />
+  <arg name="mobile_platform_start_yaw" default="1.57"      />
 
-
-  <!-- Startup Simulated Unipd Autonomous Robotics Arena in Gazebo environment -->
+  <!-- Startup Simulated Unipd Autonomous Robotics Arena in Gazebo -->
   <include file="$(find ar_arena)/launch/internal/arena.launch">
-    <arg name="paused"        value="$(arg paused)"      />
-    <arg name="gui"           value="$(arg gui)"         />
-    <arg name="use_sim_time"  value="$(arg use_sim_time)"/>
+    <arg name="paused"        value="$(arg paused)"       />
+    <arg name="gui"           value="$(arg gui)"          />
+    <arg name="use_sim_time"  value="$(arg use_sim_time)" />
   </include>
 
-  <!-- Startup UR5 manipulator in Gazebo environment -->
+  <!-- Startup UR5 manipulator in Gazebo -->
   <include file="$(find ar_arena)/launch/internal/ur5_gazebo.launch">
     <arg name="ur5_ns"        value="$(arg manipulator_ns)"       />
     <arg name="ur5_limited"   value="$(arg manipulator_limited)"  />
   </include>
 
- <!-- <include file="$(find marrtino_gazebo)/launch/spawn_marrtino.launch">
-    <arg name="launch_navigation" value="true"/>
-    <arg name="launch_mapping" value="false"/>
-    <arg name="map_file" value="arena.yaml"/>
-    <arg name="x" value="$(arg x)" />
-    <arg name="y" value="$(arg y)" />
-    <arg name="z" value="$(arg z)" />
-    <arg name="yaw" value="$(arg yaw)" />
-    <arg name="robot_id" default="$(arg marrtino_ns)"/>
-  </include> -->
+  <!-- Startup Marrtino mobile platform in Gazebo -->
+  <include file="$(find marrtino_gazebo)/launch/spawn_marrtino.launch">
+    <arg name="launch_navigation" value="true"                             />
+    <arg name="launch_mapping"    value="false"                            />
+    <arg name="map_file"          value="$(find ar_arena)/maps/arena.yaml" />
+    <arg name="x"                 value="$(arg mobile_platform_start_x)"   />
+    <arg name="y"                 value="$(arg mobile_platform_start_y)"   />
+    <arg name="z"                 value="$(arg mobile_platform_start_z)"   />
+    <arg name="yaw"               value="$(arg mobile_platform_start_yaw)" />
+    <arg name="robot_id"          value="$(arg mobile_platform_ns)"        />
+  </include>
 
-<!-- <node pkg="tf" type="static_transform_publisher" name="map_broadcaster" args="2.05 0.42 0 1.57 0 0 /world $(arg marrtino_ns)_map 100" /> -->
-
+  <!-- Publish static tf from Marrtino map to world -->
+ <node pkg="tf"
+   type="static_transform_publisher"
+   name="map_broadcaster"
+   args="0 0 0 0 0 0 /world $(arg mobile_platform_ns)_map 100" />
 </launch>
