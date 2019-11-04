@@ -9,10 +9,9 @@
   <xacro:include filename="$(find ar_arena)/urdf/assets/wall.urdf.xacro" />
   <xacro:include filename="$(find ar_arena)/urdf/assets/table.urdf.xacro" />
   <xacro:include filename="$(find ar_arena)/urdf/assets/ur_stand.urdf.xacro" />
-  <!-- <xacro:include filename="$(find ar_arena)/urdf/assets/kinect.urdf.xacro" /> -->
+  <xacro:include filename="$(find ar_arena)/urdf/assets/kinect2.urdf.xacro" />
   <xacro:include filename="$(find ar_arena)/urdf/assemblies/ur5_with_gripper.urdf.xacro" />
 
-  <xacro:include filename="$(find common_sensors)/urdf/sensors/kinect2.urdf.xacro" />
 
   <!-- setup empty world -->
   <link name="world"/>
