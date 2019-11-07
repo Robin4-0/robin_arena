@@ -6,5 +6,6 @@
   <group ns="$(arg ur5_ns)">
     <param name="robot_description"
            command="$(find xacro)/xacro '$(find ar_arena)/urdf/manipulator_arena_setup.urdf.xacro' joint_limited:=$(arg ur5_limited)" />
+
   </group>
 </launch>

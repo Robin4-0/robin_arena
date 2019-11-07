@@ -4,6 +4,9 @@
   <arg name="ur5_limited" default="true"  />
 
   <group ns="$(arg ur5_ns)">
+
+   <param name="tf_prefix" value="/"/>
+
     <include file="$(find ar_arena)/launch/internal/ur5.launch">
       <arg name="ur5_ns"      value="/$(arg ur5_ns)"      />
       <arg name="ur5_limited" value="$(arg ur5_limited)"  />

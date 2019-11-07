@@ -43,4 +43,6 @@
    type="static_transform_publisher"
    name="map_broadcaster"
    args="0 0 0 0 0 0 /world $(arg mobile_platform_ns)_map 100" />
+
+
 </launch>
