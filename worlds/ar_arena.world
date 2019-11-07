@@ -2940,7 +2940,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/home/iaslab/catkin_ws/src/internal/ar_arena/meshes/arena.dae</uri>
+              <uri>model://ar_arena/meshes/arena.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2967,7 +2967,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/home/iaslab/catkin_ws/src/internal/ar_arena/meshes/arena.dae</uri>
+              <uri>model://ar_arena/meshes/arena.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
