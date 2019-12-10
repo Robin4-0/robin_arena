@@ -68,4 +68,24 @@ $ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Rob
 $ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Robotiq3FGripperRobotOutput "{rACT: 1, rMOD: 0, rGTO: 0, rATR: 0, rGLV: 0, rICF: 0, rICS: 0, rPRA: 250, rSPA: 0, rFRA: 200, rPRB: 0, rSPB: 0, rFRB: 0, rPRC: 0, rSPC: 0, rFRC: 0, rPRS: 0, rSPS: 0, rFRS: 0}"
 ```
 
+- Attach object (example):
+
+```sh
+$ rosservice call /link_attacher_node/attach "model_name_1: 'robot'
+link_name_1: 'wrist_3_link'
+model_name_2: 'cube3'
+link_name_2: 'cube3_link'"
+```
+
+
+- Detach object (example):
+
+```sh
+$ rosservice call /link_attacher_node/detach "model_name_1: 'robot'
+link_name_1: 'wrist_3_link'
+model_name_2: 'cube3'
+link_name_2: 'cube3_link'"
+```
+
+
 
