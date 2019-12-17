@@ -15,6 +15,8 @@ Suppose to have a set of *N* goods in your warehouse, each of them uniquely iden
 ### Useful commands 
 
 > *Arena bringup*:
+---
+
 
 ```sh
 $ roslaunch ar_arena ar_bringup.launch simulation:=BOOL
@@ -24,6 +26,7 @@ where *BOOL == true* if the simulated environment is launched; otherwise, *BOOL 
 Remember that every robot has a namaspace: by default, */ur5* for the manipulator robot and */marrtino* for the mobile robot.
 
 > *Apriltag*:
+---
 
 ```sh
 $ roslaunch ar_arena apriltag.launch simulation:= BOOL
@@ -31,6 +34,7 @@ $ roslaunch ar_arena apriltag.launch simulation:= BOOL
 where *BOOL* is defined as before.
 
 > *Robotiq 3-Finger Adaptive Gripper*:
+---
 
 - Activation:
 
@@ -68,7 +72,7 @@ $ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Rob
 $ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Robotiq3FGripperRobotOutput "{rACT: 1, rMOD: 0, rGTO: 0, rATR: 0, rGLV: 0, rICF: 0, rICS: 0, rPRA: 250, rSPA: 0, rFRA: 200, rPRB: 0, rSPB: 0, rFRB: 0, rPRC: 0, rSPC: 0, rFRC: 0, rPRS: 0, rSPS: 0, rFRS: 0}"
 ```
 
-- Attach object (example):
+- Attach object [in simulation] (example):
 
 ```sh
 $ rosservice call /link_attacher_node/attach "model_name_1: 'robot'
@@ -78,7 +82,7 @@ link_name_2: 'cube3_link'"
 ```
 
 
-- Detach object (example):
+- Detach object [in simulation] (example):
 
 ```sh
 $ rosservice call /link_attacher_node/detach "model_name_1: 'robot'
@@ -87,5 +91,14 @@ model_name_2: 'cube3'
 link_name_2: 'cube3_link'"
 ```
 
+> *Magnet*:
+---
 
 
+- Activation/Deactivation:
+
+```sh
+$ roslaunch ar_arena magnet_control.launch command:=INT
+```
+
+where *INT*=1 activates the magnet, while *INT*=0 deactivates the magnet.
