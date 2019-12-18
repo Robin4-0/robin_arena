@@ -14,7 +14,8 @@ find_package(catkin REQUIRED
                     nav_msgs
                     robotiq_3f_gripper_articulated_msgs
                     robotiq_3f_gripper_control
-                    gazebo_ros)
+                    gazebo_ros
+                    ur_msgs)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
