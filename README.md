@@ -75,21 +75,23 @@ $ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Rob
 - Attach object [in simulation] (example):
 
 ```sh
-$ rosservice call /link_attacher_node/attach "model_name_1: 'robot'
-link_name_1: 'wrist_3_link'
-model_name_2: 'cube3'
-link_name_2: 'cube3_link'"
+$ rosservice call /link_attacher_node/attach "model_name_1: 'ROBOT_NAME'
+link_name_1: 'ROBOT_LINK_NAME'
+model_name_2: 'OBJECT_NAME'
+link_name_2: 'OBJECT_LINK_NAME'"
 ```
 
+where *ROBOT_NAME*, *ROBOT_LINK_NAME*, *OBJECT_NAME*, and *OBJECT_LINK_NAME* are the GAZEBO names of robot and object that has to be attached - and their links. E.g., if the user wants to attach the UR5 robot and the third simulated cube: *ROBOT_NAME = ar_ur5*, *ROBOT_LINK_NAME = wrist_3_link*, *OBJECT_NAME = cube3*, and *OBJECT_LINK_NAME = cube3_link*. 
 
 - Detach object [in simulation] (example):
 
 ```sh
-$ rosservice call /link_attacher_node/detach "model_name_1: 'robot'
-link_name_1: 'wrist_3_link'
-model_name_2: 'cube3'
-link_name_2: 'cube3_link'"
+$ rosservice call /link_attacher_node/detach "model_name_1: 'ROBOT_NAME'
+link_name_1: 'ROBOT_LINK_NAME'
+model_name_2: 'OBJECT_NAME'
+link_name_2: 'OBJECT_LINK_NAME'"
 ```
+where names are defined as before.
 
 > *Magnet*:
 ---
