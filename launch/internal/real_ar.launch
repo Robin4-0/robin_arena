@@ -11,9 +11,10 @@
 
   <!-- Bringup Unipd Autonomous Robotics Arena -->
   <include file="$(find ar_arena)/launch/internal/ur5_bringup.launch">
-    <arg name="ur5_ns"        value="$(arg manipulator_ns)"       />
-    <arg name="ur5_ip"        value="$(arg manipulator_ip)"       />
-    <arg name="ur5_limited"   value="$(arg manipulator_limited)"  />
+    <arg name="ur5_ns"        value="$(arg manipulator_ns)"         />
+    <arg name="gripper_enable"        value="$(arg gripper_enable)" />
+    <arg name="ur5_ip"        value="$(arg manipulator_ip)"         />
+    <arg name="ur5_limited"   value="$(arg manipulator_limited)"    />
   </include>
 
   <!-- Bringup Manipulator Gripper -->

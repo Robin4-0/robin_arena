@@ -2,14 +2,16 @@
 <launch>
   <arg name="ur5_ns"      default="/ur5"  />
   <arg name="ur5_limited" default="true"  />
+  <arg name="gripper_enable" default="true" />
 
   <group ns="$(arg ur5_ns)">
 
    <param name="tf_prefix" value="/"/>
 
     <include file="$(find ar_arena)/launch/internal/ur5.launch">
-      <arg name="ur5_ns"      value="/$(arg ur5_ns)"      />
-      <arg name="ur5_limited" value="$(arg ur5_limited)"  />
+      <arg name="ur5_ns"         value="/$(arg ur5_ns)"         />
+      <arg name="ur5_limited"    value="$(arg ur5_limited)"     />
+      <arg name="gripper_enable" value="$(arg gripper_enable)"  />
     </include>
 
     <!-- push robot_description to factory and spawn robot in gazebo -->
@@ -20,7 +22,9 @@
           respawn="false"
           output="screen" />
 
-      <include file="$(find ar_arena)/launch/internal/controller_utils.launch" />
+      <include if="$(arg gripper_enable)" file="$(find ar_arena)/launch/internal/controller_utils.launch"/>
+
+      <include unless="$(arg gripper_enable)" file="$(find ar_arena)/launch/internal/controller_utils_no_gripper.launch"/>
 
       <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur5.yaml" command="load"/>
       <node name="arm_controller_spawner"

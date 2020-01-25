@@ -10,6 +10,7 @@
   <arg name="gripper_ip"          default="192.168.XX.XX"   />
   <arg name="gripper_prefix"      default="l_"              />
   <arg name="moveit_package_name" default="ar_moveit_config"/>
+  <arg name="moveit_package_name_no_gripper" default="ar_no_gripper_moveit_config"/>
 
   <include if="$(arg simulation)" file="$(find ar_arena)/launch/internal/simulated_ar.launch">
     <arg name="paused"              value="$(arg paused)"              />
@@ -17,6 +18,7 @@
     <arg name="use_sim_time"        value="$(arg simulation)"          />
     <arg name="manipulator_ns"      value="$(arg manipulator_ns)"      />
     <arg name="manipulator_limited" value="$(arg manipulator_limited)" />
+    <arg name="gripper_enable"      value="$(arg gripper_enable)"      />
   </include>
 
   <include unless="$(arg simulation)" file="$(find ar_arena)/launch/internal/real_ar.launch">
@@ -29,9 +31,17 @@
   </include>
 
   <!-- Startup UR5 moveit controllers-->
-  <include file="$(find ar_arena)/launch/internal/ur5_moveit_planning_execution.launch">
+  <include if="$(arg gripper_enable)" file="$(find ar_arena)/launch/internal/ur5_moveit_planning_execution.launch">
     <arg name="ur5_ns"                value="$(arg manipulator_ns)"       />
     <arg name="moveit_package_name"   value="$(arg moveit_package_name)"  />
     <arg name="sim"                   value="$(arg simulation)"           />
   </include>
+
+  <include unless="$(arg gripper_enable)" file="$(find ar_arena)/launch/internal/ur5_no_gripper_moveit_planning_execution.launch">
+    <arg name="ur5_ns"                value="$(arg manipulator_ns)"       />
+    <arg name="moveit_package_name"   value="$(arg moveit_package_name_no_gripper)"  />
+    <arg name="sim"                   value="$(arg simulation)"           />
+  </include>
+
+
 </launch>

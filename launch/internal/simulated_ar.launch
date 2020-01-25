@@ -7,6 +7,8 @@
   <arg name="manipulator_ns"      default="/ur5" />
   <arg name="manipulator_limited" default="true" />
 
+  <arg name="gripper_enable" default="true" />
+
   <arg name="mobile_platform_ns"        default="marrtino"  />
   <arg name="mobile_platform_start_x"   default="-1.31"     />
   <arg name="mobile_platform_start_y"   default="0.0"       />
@@ -22,8 +24,9 @@
 
   <!-- Startup UR5 manipulator in Gazebo -->
   <include file="$(find ar_arena)/launch/internal/ur5_gazebo.launch">
-    <arg name="ur5_ns"        value="$(arg manipulator_ns)"       />
-    <arg name="ur5_limited"   value="$(arg manipulator_limited)"  />
+    <arg name="ur5_ns"         value="$(arg manipulator_ns)"         />
+    <arg name="ur5_limited"    value="$(arg manipulator_limited)"    />
+    <arg name="gripper_enable" value="$(arg gripper_enable)"         />
   </include>
 
   <!-- Startup Marrtino mobile platform in Gazebo -->

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="moveit_package_name"       />
+  <arg name="sim"     default="false"   />
+  <arg name="debug"   default="false"   />
+  <arg name="ur5_ns"  default="/ur5"    />
+
+  <group ns="$(arg ur5_ns)">
+    <!-- Remap follow_joint_trajectory in simulation -->
+    <remap if="$(arg sim)"
+      from="follow_joint_trajectory"
+      to="arm_controller/follow_joint_trajectory" />
+
+      <!-- Launch moveit -->
+    <include file="$(eval find(arg('moveit_package_name'))+'/launch/move_group.launch')">
+      <arg name="simulation"  value="$(arg sim)"    />
+      <arg name="debug"       value="$(arg debug)"  />
+    </include>
+  </group>
+</launch>
