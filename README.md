@@ -1,5 +1,5 @@
 
-## Arena Setup of the Autonomous Robotics master course (Dept. Information Engineering, Univ. of Padova)-- A.A. 19/20
+## Arena Setup
 
 ### Project: Human-robots cooperation for assembly tasks in Industry 4.0
 
