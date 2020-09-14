@@ -8,9 +8,9 @@
   <!-- common stuff -->
   <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
   <!-- ur10 -->
-  <xacro:include filename="$(find ar_arena)/urdf/robots/ur/ur5.urdf.xacro" />
+  <xacro:include filename="$(find robin_arena)/urdf/robots/ur/ur5.urdf.xacro" />
   <!-- adaptor -->
-  <xacro:include filename="$(find ar_arena)/urdf/assets/adaptor.urdf.xacro" />
+  <xacro:include filename="$(find robin_arena)/urdf/assets/adaptor.urdf.xacro" />
   <!-- gripper -->
   <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq_hand_macro.urdf.xacro" />
 

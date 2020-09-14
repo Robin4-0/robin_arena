@@ -1001,7 +1001,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/hexagon.dae</uri>
+              <uri>model://robin_arena/meshes/hexagon.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1020,7 +1020,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/hexagon.dae</uri>
+              <uri>model://robin_arena/meshes/hexagon.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1156,7 +1156,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/hexagon.dae</uri>
+              <uri>model://robin_arena/meshes/hexagon.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1175,7 +1175,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/hexagon.dae</uri>
+              <uri>model://robin_arena/meshes/hexagon.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1307,7 +1307,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1326,7 +1326,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1469,7 +1469,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1488,7 +1488,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1631,7 +1631,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1650,7 +1650,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2445,7 +2445,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2464,7 +2464,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2607,7 +2607,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2626,7 +2626,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2769,7 +2769,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2788,7 +2788,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/triangle_centered.stl</uri>
+              <uri>model://robin_arena/meshes/triangle_centered.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2940,7 +2940,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/arena.dae</uri>
+              <uri>model://robin_arena/meshes/arena.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2967,7 +2967,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://ar_arena/meshes/arena.dae</uri>
+              <uri>model://robin_arena/meshes/arena.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>

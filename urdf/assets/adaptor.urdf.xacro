@@ -3,7 +3,7 @@
   xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
   xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
   xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-  name="ar_tool" >
+  name="robin_tool" >
 
   <xacro:macro name="adaptor" params="parent prefix *origin">
 
@@ -23,7 +23,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://ar_arena/meshes/support.dae"/>
+          <mesh filename="package://robin_arena/meshes/support.dae"/>
         </geometry>
         <material name="greyish">
           <color rgba="0.8 0.8 0.8 1"/>
@@ -32,7 +32,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://ar_arena/meshes/support.dae"/>
+          <mesh filename="package://robin_arena/meshes/support.dae"/>
         </geometry>
       </collision>
     </link>

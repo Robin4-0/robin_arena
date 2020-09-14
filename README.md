@@ -1,7 +1,5 @@
 
-## Arena Setup
-
-### Project: Human-robots cooperation for assembly tasks in Industry 4.0
+## RobIn 4.0: 
 
 ### Introduction
 
@@ -12,29 +10,25 @@ Factories of Industry 4.0 will be populated by human operators and robots able t
 Suppose to have a set of *N* goods in your warehouse, each of them uniquely identified. *x* of them are required to fulfill an assembly task. Thus, suppose to have a subset of *n ≤ N* goods on a table. A human operator asks for *x ≤ n* of them, according to the desired assembly task. A camera is mounted on that table, together with a UR5 manipulator robot, equipped with a Robotiq 3-Finger Adaptive Gripper. This visual sensor detects the required objects and publishes their poses (position and orientation). The UR5 exploits such a data to pick up every required object and place it on the top of a Marrtino mobile robot, previously docked near the manipulator. Marrtino brings the pieces to an unloading station where a human oparator picks up the objects and assembles them. During its path, the mobile robot faces a narrow passage, delimited by fixed barriers, and an open space area, populated by fixed and movable obstacles.  
 
 
-### Useful commands 
-
-> *Arena bringup*:
----
-
+### Arena bringup
 
 ```sh
-$ roslaunch ar_arena ar_bringup.launch simulation:=BOOL
+$ roslaunch robin_arena robin_bringup.launch simulation:=BOOL
 ```
 where *BOOL == true* if the simulated environment is launched; otherwise, *BOOL == false*. This command launches robots (UR5 - with gripper - and Marrtino), Kinect, and all the motion stacks necessary to move the robots (MoveIt! - for the manipulator robot - and the ROS Navigation Stack - for the mobile robot). Please open RViz to visualize the scene and try the manipulation and navigation stacks. 
 
 Remember that every robot has a namaspace: by default, */ur5* for the manipulator robot and */marrtino* for the mobile robot.
 
-> *Apriltag*:
----
+### Apriltag
+
 
 ```sh
-$ roslaunch ar_arena apriltag.launch simulation:= BOOL
+$ roslaunch robin_arena apriltag.launch simulation:= BOOL
 ```
 where *BOOL* is defined as before.
 
-> *Robotiq 3-Finger Adaptive Gripper*:
----
+### Robotiq 3-Finger Adaptive Gripper
+
 
 - Activation:
 
@@ -81,7 +75,7 @@ model_name_2: 'OBJECT_NAME'
 link_name_2: 'OBJECT_LINK_NAME'"
 ```
 
-where *ROBOT_NAME*, *ROBOT_LINK_NAME*, *OBJECT_NAME*, and *OBJECT_LINK_NAME* are the GAZEBO names of robot and object that has to be attached - and their links. E.g., if the user wants to attach the UR5 robot and the third simulated cube: *ROBOT_NAME = ar_ur5*, *ROBOT_LINK_NAME = wrist_3_link*, *OBJECT_NAME = cube3*, and *OBJECT_LINK_NAME = cube3_link*. 
+where *ROBOT_NAME*, *ROBOT_LINK_NAME*, *OBJECT_NAME*, and *OBJECT_LINK_NAME* are the GAZEBO names of robot and object that has to be attached - and their links. E.g., if the user wants to attach the UR5 robot and the third simulated cube: *ROBOT_NAME = robin_ur5*, *ROBOT_LINK_NAME = wrist_3_link*, *OBJECT_NAME = cube3*, and *OBJECT_LINK_NAME = cube3_link*. 
 
 - Detach object [in simulation] (example):
 
@@ -93,14 +87,12 @@ link_name_2: 'OBJECT_LINK_NAME'"
 ```
 where names are defined as before.
 
-> *Magnet*:
----
-
+### Magnet
 
 - Activation/Deactivation:
 
 ```sh
-$ roslaunch ar_arena magnet_control.launch command:=INT
+$ roslaunch robin_arena magnet_control.launch command:=INT
 ```
 
 where *INT*=1 activates the magnet, while *INT*=0 deactivates the magnet.

@@ -1,5 +1,5 @@
 #!/bin/bash
-printf "IASlab UNIPD Autonomous Robotics Environment Setup Automatic Routine \n"
+printf "RobIn 4.0 Environment Setup Automatic Routine \n"
 
 kinect_serial_nr=009927144947
 
@@ -145,11 +145,13 @@ if [ -d "${ROS_WORKSPACE}" ]; then
     # Challenge Environment and Robots Configuration ROS source packages
     if  [ ${enable_autonomous_robotics_pkgs} == "y" ]; then
       cd ${internal_src_path}
-      git clone https://github.com/autonomous-robotics-master/ar_arena.git
+      git clone https://github.com/Robin4-0/robin_arena.git
       wait
-      git clone https://github.com/autonomous-robotics-master/ar_moveit_config.git
+      git clone https://github.com/Robin4-0/robin_with_gripper_moveit_config.git
       wait
-      git clone https://github.com/autonomous-robotics-master/marrtino.git
+      git clone https://github.com/Robin4-0/robin_with_magnet_moveit_config.git
+      wait
+      git clone https://github.com/Robin4-0/marrtino.git
 
       cd ${ROS_WORKSPACE}
       rosdep install -iyr --from-paths src

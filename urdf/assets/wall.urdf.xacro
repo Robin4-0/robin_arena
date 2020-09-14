@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar_wall">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robin_wall">
   <xacro:macro name="wall" params="">
     <link name="wall_link">
       <inertial>

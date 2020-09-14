@@ -10,7 +10,7 @@
   <arg name="camera_base_name"    default="camera"        />
 
   <!-- Bringup Unipd Autonomous Robotics Arena -->
-  <include file="$(find ar_arena)/launch/internal/ur5_bringup.launch">
+  <include file="$(find robin_arena)/launch/internal/ur5_bringup.launch">
     <arg name="ur5_ns"        value="$(arg manipulator_ns)"         />
     <arg name="gripper_enable"        value="$(arg gripper_enable)" />
     <arg name="ur5_ip"        value="$(arg manipulator_ip)"         />
@@ -18,7 +18,7 @@
   </include>
 
   <!-- Bringup Manipulator Gripper -->
-  <include file="$(find ar_arena)/launch/internal/gripper_real.launch" if="$(arg gripper_enable)">
+  <include file="$(find robin_arena)/launch/internal/gripper_real.launch" if="$(arg gripper_enable)">
     <arg name="manipulator_ns"        value="$(arg manipulator_ns)" />
     <arg name="gripper_ip"            value="$(arg gripper_ip)"     />
     <arg name="gripper_prefix"        value="$(arg gripper_prefix)" />

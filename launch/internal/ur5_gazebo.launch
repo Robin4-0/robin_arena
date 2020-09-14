@@ -8,7 +8,7 @@
 
    <param name="tf_prefix" value="/"/>
 
-    <include file="$(find ar_arena)/launch/internal/ur5.launch">
+    <include file="$(find robin_arena)/launch/internal/ur5.launch">
       <arg name="ur5_ns"         value="/$(arg ur5_ns)"         />
       <arg name="ur5_limited"    value="$(arg ur5_limited)"     />
       <arg name="gripper_enable" value="$(arg gripper_enable)"  />
@@ -18,13 +18,13 @@
     <node name="spawn_ur5_model"
           pkg="gazebo_ros"
           type="spawn_model"
-          args="-urdf -param robot_description -model ar_ur5"
+          args="-urdf -param robot_description -model robin_ur5"
           respawn="false"
           output="screen" />
 
-      <include if="$(arg gripper_enable)" file="$(find ar_arena)/launch/internal/controller_utils.launch"/>
+      <include if="$(arg gripper_enable)" file="$(find robin_arena)/launch/internal/controller_utils_with_gripper.launch"/>
 
-      <include unless="$(arg gripper_enable)" file="$(find ar_arena)/launch/internal/controller_utils_no_gripper.launch"/>
+      <include unless="$(arg gripper_enable)" file="$(find robin_arena)/launch/internal/controller_utils_with_magnet.launch"/>
 
       <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur5.yaml" command="load"/>
       <node name="arm_controller_spawner"

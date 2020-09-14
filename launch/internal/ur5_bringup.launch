@@ -10,7 +10,7 @@
 
   <group ns="$(arg ur5_ns)">
     <!-- robot model -->
-    <include file="$(find ar_arena)/launch/internal/ur5.launch">
+    <include file="$(find robin_arena)/launch/internal/ur5.launch">
       <arg name="ur5_ns"      value="$(arg ur5_ns)"                   />
       <arg name="gripper_enable"        value="$(arg gripper_enable)" />
       <arg name="ur5_limited" value="$(arg ur5_limited)"              />

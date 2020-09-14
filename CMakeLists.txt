@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(ar_arena)
+project(robin_arena)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -137,7 +137,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(quaternion_to_tf_node src/fromQuaternionToTF.cpp)
+
 add_executable(magnet_node src/magnet.cpp)
 
 
@@ -149,13 +149,11 @@ add_executable(magnet_node src/magnet.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(quaternion_to_tf_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 add_dependencies(magnet_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(quaternion_to_tf_node
-   ${catkin_LIBRARIES}
-)
+
 target_link_libraries(magnet_node
    ${catkin_LIBRARIES}
 )

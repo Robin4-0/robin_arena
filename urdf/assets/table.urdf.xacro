@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar_table">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robin_table">
   <xacro:macro name="table" params="">
     <static>true</static>
     <link name="table_link">

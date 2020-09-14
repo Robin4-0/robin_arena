@@ -2,9 +2,9 @@
 <launch>
   <arg name="namespace_prefix"    default=""              />
   <arg name="camera_base_name"    default="camera"            />
-  <arg name="moveit_package_name" default="ar_moveit_config"  />
+  <arg name="moveit_package_name" default="robin_with_magnet_moveit_config"  />
 
-  <arg name="apriltag_calibration_conf"   default="$(find ar_arena)/cfg/apriltag_calibration.yaml" />
+  <arg name="apriltag_calibration_conf"   default="$(find robin_arena)/cfg/apriltag_calibration.yaml" />
 
   <arg name="manipulator_ns"      default="/ur5"            />
   <arg name="manipulator_ip"      default="192.168.202.138" />
@@ -17,14 +17,14 @@
   </include>
 
   <!-- start Apriltags detector -->
-  <include file="$(find ar_arena)/launch/internal/apriltag_ros.launch">
+  <include file="$(find robin_arena)/launch/internal/apriltag_ros.launch">
     <arg name="camera_name"                value="$(arg camera_base_name)"          />
     <arg name="calibration"                value="true"                             />
     <arg name="apriltags_calibration_conf" value="$(arg apriltag_calibration_conf)" />
   </include>
 
   <!-- bring up the robot -->
-  <include file="$(find ar_arena)/launch/ar_bringup.launch">
+  <include file="$(find robin_arena)/launch/robin_bringup.launch">
     <arg name="simulation"             value="false"                       />
     <arg name="manipulator_ns"         value="$(arg manipulator_ns)"       />
     <arg name="manipulator_limited"    value="$(arg manipulator_limited)"  />
