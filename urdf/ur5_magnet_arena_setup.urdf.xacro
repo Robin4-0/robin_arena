@@ -10,7 +10,7 @@
   <xacro:include filename="$(find robin_arena)/urdf/assets/table.urdf.xacro" />
   <xacro:include filename="$(find robin_arena)/urdf/assets/ur_stand.urdf.xacro" />
   <xacro:include filename="$(find robin_arena)/urdf/assets/kinect2.urdf.xacro" />
-  <xacro:include filename="$(find robin_arena)/urdf/assemblies/ur5_no_gripper.urdf.xacro" />
+  <xacro:include filename="$(find robin_arena)/urdf/assemblies/ur5_magnet.urdf.xacro" />
 
 
   <!-- setup empty world -->
@@ -42,11 +42,11 @@
 
 
   <!-- table - robot - adaptor as a magnet -->
-  <xacro:ur5_no_gripper prefix=""
+  <xacro:ur5_magnet prefix=""
                           parent="ur_stand_link"
                           joint_limited="$(arg joint_limited)">
     <origin xyz="0 0 0.435" rpy="0 0 0"/>
-  </xacro:ur5_no_gripper>
+  </xacro:ur5_magnet>
 
   <!-- attach the kinect support to the table-->
   <!-- <joint name="kinect_joint" type="fixed">
