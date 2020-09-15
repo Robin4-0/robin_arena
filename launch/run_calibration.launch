@@ -2,7 +2,7 @@
 <launch>
   <arg name="namespace_prefix"    default=""              />
   <arg name="camera_base_name"    default="camera"            />
-  <arg name="moveit_package_name" default="robin_with_magnet_moveit_config"  />
+  <arg name="moveit_package_name" default="robin_ur5_magnet_moveit_config"  />
 
   <arg name="apriltag_calibration_conf"   default="$(find robin_arena)/cfg/apriltag_calibration.yaml" />
 

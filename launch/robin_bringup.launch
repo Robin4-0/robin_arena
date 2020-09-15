@@ -9,8 +9,8 @@
   <arg name="gripper_enable"      default="true"            />
   <arg name="gripper_ip"          default="192.168.XX.XX"   />
   <arg name="gripper_prefix"      default="l_"              />
-  <arg name="moveit_gripper_package_name" default="robin_with_gripper_moveit_config"/>
-  <arg name="moveit_magnet_package_name" default="robin_with_magnet_moveit_config"/>
+  <arg name="moveit_gripper_package_name" default="robin_u5_3fgripper_moveit_config"/>
+  <arg name="moveit_magnet_package_name" default="robin_ur5_magnet_moveit_config"/>
 
   <include if="$(arg simulation)" file="$(find robin_arena)/launch/internal/robin_sim.launch">
     <arg name="paused"              value="$(arg paused)"              />
@@ -31,13 +31,13 @@
   </include>
 
   <!-- Startup UR5 moveit controllers-->
-  <include if="$(arg gripper_enable)" file="$(find robin_arena)/launch/internal/ur5_with_gripper_moveit_planning_execution.launch">
+  <include if="$(arg gripper_enable)" file="$(find robin_arena)/launch/internal/ur5_3fgripper_moveit_planning_execution.launch">
     <arg name="ur5_ns"                value="$(arg manipulator_ns)"       />
     <arg name="moveit_package_name"   value="$(arg moveit_gripper_package_name)"  />
     <arg name="sim"                   value="$(arg simulation)"           />
   </include>
 
-  <include unless="$(arg gripper_enable)" file="$(find robin_arena)/launch/internal/ur5_with_magnet_moveit_planning_execution.launch">
+  <include unless="$(arg gripper_enable)" file="$(find robin_arena)/launch/internal/ur5_magnet_moveit_planning_execution.launch">
     <arg name="ur5_ns"                value="$(arg manipulator_ns)"       />
     <arg name="moveit_package_name"   value="$(arg moveit_magnet_package_name)"  />
     <arg name="sim"                   value="$(arg simulation)"           />

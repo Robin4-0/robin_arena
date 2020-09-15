@@ -22,9 +22,9 @@
           respawn="false"
           output="screen" />
 
-      <include if="$(arg gripper_enable)" file="$(find robin_arena)/launch/internal/controller_utils_with_gripper.launch"/>
+      <include if="$(arg gripper_enable)" file="$(find robin_arena)/launch/internal/controller_utils_ur5_3fgripper.launch"/>
 
-      <include unless="$(arg gripper_enable)" file="$(find robin_arena)/launch/internal/controller_utils_with_magnet.launch"/>
+      <include unless="$(arg gripper_enable)" file="$(find robin_arena)/launch/internal/controller_utils_ur5_magnet.launch"/>
 
       <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur5.yaml" command="load"/>
       <node name="arm_controller_spawner"

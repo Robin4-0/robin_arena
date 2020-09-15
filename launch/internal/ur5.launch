@@ -8,12 +8,12 @@
 
   <group if="$(arg gripper_enable)"> 
      <param   name="robot_description"
-              command="$(find xacro)/xacro '$(find robin_arena)/urdf/manipulator_with_gripper_arena_setup.urdf.xacro' joint_limited:=$(arg ur5_limited)" />
+              command="$(find xacro)/xacro '$(find robin_arena)/urdf/manipulator_3fgripper_arena_setup.urdf.xacro' joint_limited:=$(arg ur5_limited)" />
   </group>
 
   <group unless="$(arg gripper_enable)"> 
      <param name="robot_description"
-            command="$(find xacro)/xacro '$(find robin_arena)/urdf/manipulator_with_magnet_arena_setup.urdf.xacro' joint_limited:=$(arg ur5_limited)" />
+            command="$(find xacro)/xacro '$(find robin_arena)/urdf/manipulator_magnet_arena_setup.urdf.xacro' joint_limited:=$(arg ur5_limited)" />
   </group>
   
   </group>

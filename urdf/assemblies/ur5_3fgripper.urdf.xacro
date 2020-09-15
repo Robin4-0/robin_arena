@@ -3,7 +3,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       name="ur5_with_gripper" >
+       name="ur5_3fgripper" >
 
   <!-- common stuff -->
   <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
@@ -14,8 +14,8 @@
   <!-- gripper -->
   <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq_hand_macro.urdf.xacro" />
 
-  <!-- macro definition for ur5 robot with gripper -->
-  <xacro:macro name="ur5_with_gripper" params="prefix parent joint_limited *origin">
+  <!-- macro definition for ur5 robot with 3-finger gripper -->
+  <xacro:macro name="ur5_3fgripper" params="prefix parent joint_limited *origin">
     <joint name="${prefix}base_joint" type="fixed">
       <parent link="${parent}"/>
       <child link="${prefix}base_link"/>
