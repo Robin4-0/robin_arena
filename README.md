@@ -1,5 +1,5 @@
 
-# RobIn 4.0
+# RobIn 4.0 - the Robotics for Industry 4.0 program
 
 ### Introduction
 
@@ -65,8 +65,9 @@ $ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Rob
 ```sh
 $ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Robotiq3FGripperRobotOutput "{rACT: 1, rMOD: 0, rGTO: 0, rATR: 0, rGLV: 0, rICF: 0, rICS: 0, rPRA: 250, rSPA: 0, rFRA: 200, rPRB: 0, rSPB: 0, rFRB: 0, rPRC: 0, rSPC: 0, rFRC: 0, rPRS: 0, rSPS: 0, rFRS: 0}"
 ```
+### Attach/detach objects [in simulation] (e.g., fake magnet)
 
-- Attach object [in simulation] (example):
+- Attach object:
 
 ```sh
 $ rosservice call /link_attacher_node/attach "model_name_1: 'ROBOT_NAME'
@@ -77,7 +78,7 @@ link_name_2: 'OBJECT_LINK_NAME'"
 
 where *ROBOT_NAME*, *ROBOT_LINK_NAME*, *OBJECT_NAME*, and *OBJECT_LINK_NAME* are the GAZEBO names of robot and object that has to be attached - and their links. E.g., if the user wants to attach the UR5 robot and the third simulated cube: *ROBOT_NAME = robin_ur5*, *ROBOT_LINK_NAME = wrist_3_link*, *OBJECT_NAME = cube3*, and *OBJECT_LINK_NAME = cube3_link*. 
 
-- Detach object [in simulation] (example):
+- Detach object:
 
 ```sh
 $ rosservice call /link_attacher_node/detach "model_name_1: 'ROBOT_NAME'
@@ -87,7 +88,7 @@ link_name_2: 'OBJECT_LINK_NAME'"
 ```
 where names are defined as before.
 
-### Magnet
+### Magnet [real]
 
 - Activation/Deactivation:
 
@@ -96,3 +97,29 @@ $ roslaunch robin_arena magnet_control.launch command:=INT
 ```
 
 where *INT*=1 activates the magnet, while *INT*=0 deactivates the magnet.
+
+### MoveIt!
+
+The MoveIt! packages of both the UR5 equipped with the 3-Finger adaptive gripper and the UR5 equipped with the magnet are already launched during the RobIn arena bringup. 
+*Note*: as two different robots populate the environment, different namespaces are required. Focusing on the manipulator, the following setup is needed: 
+- Move Group Namespace: ur5;
+- Robot Description: ur5/robot_description
+- Planning Group: manipulator
+
+### Rviz
+
+```sh
+$ rviz
+```
+
+A configuration file is available to facilitate the arena visualization. From the visualizer menu, open /robin_arena/cfg/arena_config.rviz
+
+### References
+
+- Tosello E., Castaman N., Tagliapietra L., Menegatti E. *RobIn 4.0: a Modular and Open-Source Robotics Program to Train Future Engineers for Industry 4.0*.  IEEE Transactions on Learning Technologies. *Under review*
+
+- Tosello E., Castaman N., Menegatti E. *Using robotics to train students for Industry 4.0*. 12th IFAC Symposium on Advances in Control Education 2019. July 7-9, Philadelphia, PA, USA. In: IFAC-PapersOnLine. Vol 52. Issue 9. 2019. Pages 153-158. ISSN 2405-8963. https://doi.org/10.1016/j.ifacol.2019.08.185.
+
+- Tosello E., Castaman N., Michieletto S., Menegatti E. *Teaching Robot Programming for Industry 4.0*. In: Moro M., Alimisis D., Iocchi L. (eds) Educational Robotics in the Context of the Maker Movement. Edurobotics 2018. Advances in Intelligent Systems and Computing, vol 946. Springer, Cham. https://doi.org/10.1007/978-3-030-18141-3_9
+
+
