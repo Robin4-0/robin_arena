@@ -1,5 +1,5 @@
 
-# RobIn 4.0 - the Robotics for Industry 4.0 program
+# RobIn 4.0 - Robotics for Industry 4.0
 
 ### Introduction
 
@@ -13,9 +13,10 @@ Suppose to have a set of *N* goods in your warehouse, each of them uniquely iden
 ### Arena bringup
 
 ```sh
-$ roslaunch robin_arena robin_bringup.launch simulation:=BOOL
+$ roslaunch robin_arena robin_bringup.launch simulation:=BOOL_SIM gripper_enable:=BOOL_GRIPPER
 ```
-where *BOOL == true* if the simulated environment is launched; otherwise, *BOOL == false*. This command launches robots (UR5 - with gripper - and Marrtino), Kinect, and all the motion stacks necessary to move the robots (MoveIt! - for the manipulator robot - and the ROS Navigation Stack - for the mobile robot). Please open RViz to visualize the scene and try the manipulation and navigation stacks. 
+where *BOOL_SIM == true* if the simulated environment is launched; otherwise, *BOOL_SIM == false*. 
+If *BOOL_GRIPPER == true*, the command launches UR5 with a Robotiq 3-finger gripper attached on its end-effector; otherwise, *BOOL_GRIPPER == false* launches UR5 with a magnet. The command also launches Marrtino, Kinect, and the motion stacks necessary to move the manipulator robot. Please open RViz to visualize the scene and try the manipulation and navigation stacks. 
 
 Remember that every robot has a namaspace: by default, */ur5* for the manipulator robot and */marrtino* for the mobile robot.
 
@@ -98,13 +99,37 @@ $ roslaunch robin_arena magnet_control.launch command:=INT
 
 where *INT*=1 activates the magnet, while *INT*=0 deactivates the magnet.
 
-### MoveIt!
+### MoveIt! - Manipulation
 
 The MoveIt! packages of both the UR5 equipped with the 3-Finger adaptive gripper and the UR5 equipped with the magnet are already launched during the RobIn arena bringup. 
-*Note*: as two different robots populate the environment, different namespaces are required. Focusing on the manipulator, the following setup is needed: 
-- Move Group Namespace: ur5;
-- Robot Description: ur5/robot_description
-- Planning Group: manipulator
+
+*Note*: as two different robots populate the environment, different namespaces are required. Focusing on the manipulator, the following Rviz setup is needed: 
+- Move Group Namespace: *ur5*;
+- Robot Description: *ur5/robot_description*;
+- Planning Group: *manipulator*.
+
+*See the Rviz configuration file*
+
+### Navigation
+
+Launch marrtino navigation stack:
+
+```sh
+$ roslaunch marrtino_navigation robot_navigation.launch map_file:=MAP scan_topic:=/marrtino/scan
+```
+with *MAP* the path to */robin_arena/maps/arena.yaml*.
+
+*Note*: As for the UR5 manipulator robot, Marrtino has its own namespace. Thus, in Rviz:
+- Robot Model/Robot Description: */marrtino/robot_description*;
+
+and in the Panel/Tool Properties of Rviz:
+- 2D Pose Estimate/Topic: */marrtino/initial_pose*;
+- 2D Nav Goal/Topic: */marrtino/move_base_simple/goal*;
+- Publish Point/Topic: */marrtino/clicked_point*
+
+*See the Rviz configuration file*
+
+
 
 ### Rviz
 
@@ -112,7 +137,7 @@ The MoveIt! packages of both the UR5 equipped with the 3-Finger adaptive gripper
 $ rviz
 ```
 
-A configuration file is available to facilitate the arena visualization. From the visualizer menu, open /robin_arena/cfg/arena_config.rviz
+A configuration file is available to facilitate the arena visualization. From the visualizer menu, open */robin_arena/cfg/arena_config.rviz*.
 
 ### References
 
