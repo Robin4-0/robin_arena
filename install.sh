@@ -147,9 +147,9 @@ if [ -d "${ROS_WORKSPACE}" ]; then
       cd ${internal_src_path}
       git clone https://github.com/Robin4-0/robin_arena.git
       wait
-      git clone https://github.com/Robin4-0/robin_with_gripper_moveit_config.git
+      git clone https://github.com/Robin4-0/robin_ur5_3fgripper_moveit_config.git
       wait
-      git clone https://github.com/Robin4-0/robin_with_magnet_moveit_config.git
+      git clone https://github.com/Robin4-0/robin_ur5_magnet_moveit_config.git
       wait
       git clone https://github.com/Robin4-0/marrtino.git
 
