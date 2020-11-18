@@ -7,7 +7,9 @@
   <arg name="manipulator_ns"      default="/ur5" />
   <arg name="manipulator_limited" default="true" />
 
-  <arg name="gripper_enable" default="true" />
+  <arg name="spawn_marrtino"      default="true" />
+  <arg name="gripper_enable"      default="true" />
+  <arg name="arena_name"          default="robin_arena" />
 
   <arg name="mobile_platform_ns"        default="marrtino"  />
   <arg name="mobile_platform_start_x"   default="-1.31"     />
@@ -20,6 +22,7 @@
     <arg name="paused"        value="$(arg paused)"       />
     <arg name="gui"           value="$(arg gui)"          />
     <arg name="use_sim_time"  value="$(arg use_sim_time)" />
+    <arg name="arena_name"    value="$(arg arena_name)"   />
   </include>
 
   <!-- Startup UR5 manipulator in Gazebo -->
@@ -30,22 +33,23 @@
   </include>
 
   <!-- Startup Marrtino mobile platform in Gazebo -->
-  <include file="$(find marrtino_gazebo)/launch/spawn_marrtino.launch">
-    <arg name="launch_navigation" value="true"                             />
-    <arg name="launch_mapping"    value="false"                            />
-    <arg name="map_file"          value="$(find robin_arena)/maps/arena.yaml" />
-    <arg name="x"                 value="$(arg mobile_platform_start_x)"   />
-    <arg name="y"                 value="$(arg mobile_platform_start_y)"   />
-    <arg name="z"                 value="$(arg mobile_platform_start_z)"   />
-    <arg name="yaw"               value="$(arg mobile_platform_start_yaw)" />
-    <arg name="robot_id"          value="$(arg mobile_platform_ns)"        />
-  </include>
+  <group if="$(arg spawn_marrtino)">
+    <include file="$(find marrtino_gazebo)/launch/spawn_marrtino.launch">
+      <arg name="launch_navigation" value="true"                             />
+      <arg name="launch_mapping"    value="false"                            />
+      <arg name="map_file"          value="$(find robin_arena)/maps/arena.yaml" />
+      <arg name="x"                 value="$(arg mobile_platform_start_x)"   />
+      <arg name="y"                 value="$(arg mobile_platform_start_y)"   />
+      <arg name="z"                 value="$(arg mobile_platform_start_z)"   />
+      <arg name="yaw"               value="$(arg mobile_platform_start_yaw)" />
+      <arg name="robot_id"          value="$(arg mobile_platform_ns)"        />
+    </include>
 
-  <!-- Publish static tf from Marrtino map to world -->
- <node pkg="tf"
-   type="static_transform_publisher"
-   name="map_broadcaster"
-   args="0 0 0 0 0 0 /world $(arg mobile_platform_ns)_map 100" />
-
+    <!-- Publish static tf from Marrtino map to world -->
+    <node pkg="tf"
+     type="static_transform_publisher"
+     name="map_broadcaster"
+     args="0 0 0 0 0 0 /world $(arg mobile_platform_ns)_map 100" />
+  </group>
 
 </launch>

@@ -13,10 +13,12 @@ Suppose to have a set of *N* goods in your warehouse, each of them uniquely iden
 ### Arena bringup
 
 ```sh
-$ roslaunch robin_arena robin_bringup.launch simulation:=BOOL_SIM gripper_enable:=BOOL_GRIPPER
+$ roslaunch robin_arena robin_bringup.launch simulation:=BOOL_SIM gripper_enable:=BOOL_GRIPPER spawn_marrtino:=BOOL_MARRTINO arena_name:=ARENA_NAME
 ```
 where *BOOL_SIM == true* if the simulated environment is launched; otherwise, *BOOL_SIM == false*. 
-If *BOOL_GRIPPER == true*, the command launches UR5 with a Robotiq 3-finger gripper attached on its end-effector; otherwise, *BOOL_GRIPPER == false* launches UR5 with a magnet. The command also launches Marrtino, Kinect, and the motion stacks necessary to move the manipulator robot. Please open RViz to visualize the scene and try the manipulation and navigation stacks. 
+If *BOOL_GRIPPER == true*, the command launches UR5 with a Robotiq 3-finger gripper attached on its end-effector; otherwise, *BOOL_GRIPPER == false* launches UR5 with a magnet. The command also launches Marrtino, Kinect, and the motion stacks necessary to move the manipulator robot. Please open RViz to visualize the scene and try the manipulation and navigation stacks.
+If *BOOL_MARRTINO == false* the Marrtino robot will not be shown in the simulated/real arena.
+*ARENA_NAME* defines the name of the arena, it can assume the following values only: *robin_arena* or *robin_arena_simplified*. 
 
 Remember that every robot has a namaspace: by default, */ur5* for the manipulator robot and */marrtino* for the mobile robot.
 

@@ -3,6 +3,8 @@
   <arg name="paused"              default="false"           />
   <arg name="gui"                 default="true"            />
   <arg name="simulation"          default="true"            />
+  <arg name="arena_name"          default="robin_arena"     />
+  <arg name="spawn_marrtino"      default="true"            />
   <arg name="manipulator_ns"      default="/ur5"            />
   <arg name="manipulator_ip"      default="192.168.202.138" />
   <arg name="manipulator_limited" default="true"            />
@@ -16,9 +18,11 @@
     <arg name="paused"              value="$(arg paused)"              />
     <arg name="gui"                 value="$(arg gui)"                 />
     <arg name="use_sim_time"        value="$(arg simulation)"          />
+    <arg name="spawn_marrtino"      value="$(arg spawn_marrtino)"      />
     <arg name="manipulator_ns"      value="$(arg manipulator_ns)"      />
     <arg name="manipulator_limited" value="$(arg manipulator_limited)" />
     <arg name="gripper_enable"      value="$(arg gripper_enable)"      />
+    <arg name="arena_name"          value="$(arg arena_name)"          />
   </include>
 
   <include unless="$(arg simulation)" file="$(find robin_arena)/launch/internal/robin_real.launch">
