@@ -30,45 +30,7 @@ $ roslaunch robin_arena apriltag.launch simulation:= BOOL
 ```
 where *BOOL* is defined as before.
 
-### Robotiq 3-Finger Adaptive Gripper
-
-
-- Activation:
-
-```sh
-$ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Robotiq3FGripperRobotOutput "{rACT: 1, rMOD: 0, rGTO: 0, rATR: 0, rGLV: 0, rICF: 0, rICS: 0, rPRA: 0, rSPA: 0, rFRA: 0, rPRB: 0, rSPB: 0, rFRB: 0, rPRC: 0, rSPC: 0, rFRC: 0, rPRS: 0, rSPS: 0, rFRS: 0}"
-```
-
-- Deactivation:
-
-```sh
-$ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Robotiq3FGripperRobotOutput "{rACT: 0, rMOD: 0, rGTO: 0, rATR: 0, rGLV: 0, rICF: 0, rICS: 0, rPRA: 0, rSPA: 0, rFRA: 0, rPRB: 0, rSPB: 0, rFRB: 0, rPRC: 0, rSPC: 0, rFRC: 0, rPRS: 0, rSPS: 0, rFRS: 0}"
-```
-
-- Close:
-
-```sh
-$ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Robotiq3FGripperRobotOutput "{rACT: 1, rMOD: 0, rGTO: 1, rATR: 0, rGLV: 0, rICF: 0, rICS: 0, rPRA: 250, rSPA: 200, rFRA: 200, rPRB: 0, rSPB: 0, rFRB: 0, rPRC: 0, rSPC: 0, rFRC: 0, rPRS: 0, rSPS: 0, rFRS: 0}"
-```
-
-- Keep close pose:
-
-```sh
-$ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Robotiq3FGripperRobotOutput "{rACT: 1, rMOD: 0, rGTO: 0, rATR: 0, rGLV: 0, rICF: 0, rICS: 0, rPRA: 0, rSPA: 0, rFRA: 0, rPRB: 0, rSPB: 0, rFRB: 0, rPRC: 0, rSPC: 0, rFRC: 0, rPRS: 0, rSPS: 0, rFRS: 0}"
-```
- 
-- Open:
-
-```sh
-$ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Robotiq3FGripperRobotOutput "{rACT: 1, rMOD: 0, rGTO: 1, rATR: 0, rGLV: 0, rICF: 0, rICS: 0, rPRA: 0, rSPA: 200, rFRA: 0, rPRB: 0, rSPB: 0, rFRB: 0, rPRC: 0, rSPC: 0, rFRC: 0, rPRS: 0, rSPS: 0, rFRS: 0}"
-```
-
-- Keep open pose:
-
-```sh
-$ rostopic pub --once /left_hand/command robotiq_3f_gripper_articulated_msgs/Robotiq3FGripperRobotOutput "{rACT: 1, rMOD: 0, rGTO: 0, rATR: 0, rGLV: 0, rICF: 0, rICS: 0, rPRA: 250, rSPA: 0, rFRA: 200, rPRB: 0, rSPB: 0, rFRB: 0, rPRC: 0, rSPC: 0, rFRC: 0, rPRS: 0, rSPS: 0, rFRS: 0}"
-```
-### Attach/detach objects [in simulation] (e.g., fake magnet)
+### Attach/detach objects (e.g., fake magnet)
 
 - Attach object:
 
@@ -90,16 +52,6 @@ model_name_2: 'OBJECT_NAME'
 link_name_2: 'OBJECT_LINK_NAME'"
 ```
 where names are defined as before.
-
-### Magnet [real]
-
-- Activation/Deactivation:
-
-```sh
-$ roslaunch robin_arena magnet_control.launch command:=INT
-```
-
-where *INT*=1 activates the magnet, while *INT*=0 deactivates the magnet.
 
 ### MoveIt! - Manipulation
 
@@ -130,8 +82,6 @@ and in the Panel/Tool Properties of Rviz:
 - Publish Point/Topic: */marrtino/clicked_point*
 
 *See the Rviz configuration file*
-
-
 
 ### Rviz
 
