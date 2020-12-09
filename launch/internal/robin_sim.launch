@@ -11,12 +11,20 @@
   <arg name="gripper_enable"      default="true" />
   <arg name="arena_name"          default="robin_arena" />
 
+  <!--
   <arg name="mobile_platform_ns"        default="marrtino"  />
   <arg name="mobile_platform_start_x"   default="-1.31"     />
   <arg name="mobile_platform_start_y"   default="0.0"       />
   <arg name="mobile_platform_start_z"   default="0.0"       />
   <arg name="mobile_platform_start_yaw" default="1.57"      />
-
+  -->
+  
+  <arg name="mobile_platform_ns"        default="marrtino"  />
+  <arg name="mobile_platform_start_x"   default="0.263745"     />
+  <arg name="mobile_platform_start_y"   default="0.747817"       />
+  <arg name="mobile_platform_start_z"   default="0.0"       />
+  <arg name="mobile_platform_start_yaw" default="2.034289"      />
+  
   <!-- Startup Simulated Unipd Autonomous Robotics Arena in Gazebo -->
   <include file="$(find robin_arena)/launch/internal/arena.launch">
     <arg name="paused"        value="$(arg paused)"       />
