@@ -11,29 +11,20 @@
   <arg name="gripper_enable"      default="true" />
   <arg name="arena_name"          default="robin_arena" />
 
-  
+  <!--
   <arg name="mobile_platform_ns"        default="marrtino"  />
   <arg name="mobile_platform_start_x"   default="-1.31"     />
   <arg name="mobile_platform_start_y"   default="0.0"       />
   <arg name="mobile_platform_start_z"   default="0.0"       />
   <arg name="mobile_platform_start_yaw" default="1.57"      />
-  
-  
-  <!-- pose arena_simplified 
-  <arg name="mobile_platform_ns"        default="marrtino"  />
-  <arg name="mobile_platform_start_x"   default="0.263745"     />
-  <arg name="mobile_platform_start_y"   default="0.747817"       />
-  <arg name="mobile_platform_start_z"   default="0.0"       />
-  <arg name="mobile_platform_start_yaw" default="2.034289"      />
   -->
   
-  <!--
+  <!-- pose arena_simplified -->
   <arg name="mobile_platform_ns"        default="marrtino"  />
-  <arg name="mobile_platform_start_x"   default="0.147385"     />
-  <arg name="mobile_platform_start_y"   default="3.356357"       />
+  <arg name="mobile_platform_start_x"   default="0.7"     />
+  <arg name="mobile_platform_start_y"   default="3.4"       />
   <arg name="mobile_platform_start_z"   default="0.0"       />
-  <arg name="mobile_platform_start_yaw" default="1.62213"      />
-  -->
+  <arg name="mobile_platform_start_yaw" default="3.14"      />
   
   <!-- Startup Simulated Unipd Autonomous Robotics Arena in Gazebo -->
   <include file="$(find robin_arena)/launch/internal/arena.launch">
@@ -55,7 +46,7 @@
     <include file="$(find marrtino_gazebo)/launch/spawn_marrtino.launch">
       <arg name="launch_navigation" value="true"                             />
       <arg name="launch_mapping"    value="false"                            />
-      <arg name="map_file"          value="$(find robin_arena)/maps/arena.yaml" />
+      <arg name="map_file"          value="$(find robin_arena)/maps/arena_open.yaml" />
       <arg name="x"                 value="$(arg mobile_platform_start_x)"   />
       <arg name="y"                 value="$(arg mobile_platform_start_y)"   />
       <arg name="z"                 value="$(arg mobile_platform_start_z)"   />
