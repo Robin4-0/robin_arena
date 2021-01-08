@@ -19,11 +19,13 @@
   <arg name="mobile_platform_start_yaw" default="1.57"      />
   -->
   
+  <!-- pose arena_simplified -->
   <arg name="mobile_platform_ns"        default="marrtino"  />
   <arg name="mobile_platform_start_x"   default="0.7"     />
   <arg name="mobile_platform_start_y"   default="3.4"       />
   <arg name="mobile_platform_start_z"   default="0.0"       />
   <arg name="mobile_platform_start_yaw" default="3.14"      />
+
   
   <!-- Startup Simulated Unipd Autonomous Robotics Arena in Gazebo -->
   <include file="$(find robin_arena)/launch/internal/arena.launch">

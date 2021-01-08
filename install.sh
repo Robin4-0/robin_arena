@@ -146,6 +146,9 @@ if [ -d "${ROS_WORKSPACE}" ]; then
     if  [ ${enable_autonomous_robotics_pkgs} == "y" ]; then
       cd ${internal_src_path}
       git clone https://github.com/Robin4-0/robin_arena.git
+      cd ${internal_src_path}/robin_arena
+      git checkout --track origin/simplified_arena
+      cd ${internal_src_path}
       wait
       git clone https://github.com/Robin4-0/robin_ur5_3fgripper_moveit_config.git
       wait
@@ -156,6 +159,9 @@ if [ -d "${ROS_WORKSPACE}" ]; then
       cd ${ROS_WORKSPACE}
       rosdep install -iyr --from-paths src
     fi
+
+    # Fix - export again the freenect2_DIR to fix the libfreenect2 problem
+    export freenect2_DIR=$HOME/ext_libs/libfreenect2/install/lib/cmake/freenect2
 
     # Compiling
     cd ${ROS_WORKSPACE}
